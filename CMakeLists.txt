@@ -42,8 +42,6 @@ if (NOT TARGET saucer::saucer)
   message(FATAL_ERROR "Could not find saucer target!")
 endif()
 
-saucer_add_module(${PROJECT_NAME})
-
 # --------------------------------------------------------------------------------------------------------
 # Setup Sources
 # --------------------------------------------------------------------------------------------------------
@@ -79,7 +77,7 @@ if (saucer_backend STREQUAL "WebKitGtk")
     "src/gtk.*cpp"
   )
 
-  target_sources(${PROJECT_NAME} PRIVATE ${gtk_sources})
+    target_sources(${PROJECT_NAME} PRIVATE ${gtk_sources})
 endif()
 
 if (saucer_backend STREQUAL "WebView2")
@@ -89,3 +87,6 @@ if (saucer_backend STREQUAL "WebView2")
 
   target_sources(${PROJECT_NAME} PRIVATE ${win_sources})
 endif()
+
+find_package(saucer REQUIRED)
+target_link_libraries(${PROJECT_NAME} saucer)
