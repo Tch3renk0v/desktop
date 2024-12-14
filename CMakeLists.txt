@@ -88,5 +88,4 @@ if (saucer_backend STREQUAL "WebView2")
   target_sources(${PROJECT_NAME} PRIVATE ${win_sources})
 endif()
 
-find_package(saucer REQUIRED)
 target_link_libraries(${PROJECT_NAME} saucer)
